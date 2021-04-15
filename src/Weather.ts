@@ -34,7 +34,7 @@ export async function getWather(cityName:string):Promise<IWheater> {
 
 export async function getFiveDayWeather(cityKey:string =DEFAULTKEY): Promise<string[]> {// i will get it from redux
   
-const {data}:any = await Api.apiGetCall(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08&metric=true`);
+const {data}:any = await Api.apiGetCall(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08&metric=true`);
 const {DailyForecasts}  = data ;
 const getTempatureForFiveDays = DailyForecasts.map((element:any,index:number) => `${element.Temperature.Minimum.Value} ${element.Temperature.Minimum.Unit} - ${element.Temperature.Maximum.Value} ${element.Temperature.Maximum.Unit} ` )
 return getTempatureForFiveDays;
