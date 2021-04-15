@@ -8,7 +8,7 @@ export async function getWather(cityName:string):Promise<IWheater> {
     async function getLocationKey(){
      if (cityName) {
          const {data}:any = await Api.apiGetCall(
-           `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08&q=${cityName}`
+           `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08&q=${cityName}`
          );
          if(Array.isArray(data) && data.length !== 0 ){
              console.log(data[0].Key)
@@ -19,7 +19,7 @@ export async function getWather(cityName:string):Promise<IWheater> {
      const locationKey:string = await getLocationKey()
      const city:string = locationKey === DEFAULTKEY ? "tel aviv": cityName;
      try{
-      const {data}:any = await Api.apiGetCall(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08`)
+      const {data}:any = await Api.apiGetCall(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=ocrDdRGpBaGDnjg0FzOSnKAgBU9LGd08`)
       const tempatureValue:string = data[0].Temperature.Metric.Value;
      const tempatureUnit:string = data[0].Temperature.Metric.Unit; 
      return {city,tempatureValue,tempatureUnit,locationKey}
