@@ -8,7 +8,7 @@ const Favorites = () => {
 
     const state:Array<IWheater> = useSelector((state:any)=>state.FavoriteReducer.favorites)
 
-    if(state.length === 0) return <div style={{height:"100vh",width:"100vw",display:"flex",alignItems:"center"}}> <h1>No Favorite Weather where found</h1></div>
+    if(state.length === 0) return <div style={{height:"100vh",width:"100vw",display:"flex",alignItems:"center",justifyContent:"center"}}> <h1>No Favorite Weather where found</h1></div>
     return (
         <div>
             {

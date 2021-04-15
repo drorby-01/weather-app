@@ -20,16 +20,14 @@ const Home = () => {
     });
   }, []);
 
-
   return (
     <div className="home">
       <header className="row m-1">
-         
         <SearchBar />
-        <BackgroundTheme/>
-        <BtnFavorite/>
+        <BackgroundTheme />
+        <BtnFavorite />
       </header>
-      <aside className="col-lg-3 col-md-7 col-xl-3 col-sm-7 col-10 p-0">
+      <aside>
         <CityWeather />
       </aside>
       <footer>

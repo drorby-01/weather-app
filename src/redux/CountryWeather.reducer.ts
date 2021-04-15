@@ -5,7 +5,7 @@ const initalState = {
     locationKey:"215854",
     city:"",
     tempatureValue:"",
-    tempatureUnit:"C"
+    tempatureUnit:"C°"
 }
 
 export interface IAction { 

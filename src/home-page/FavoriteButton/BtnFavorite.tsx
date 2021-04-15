@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { IWheater } from "../../redux/CountryWeather.action";
 import { addToFavorites } from "../../redux/FsvoritesWeather/Favorites.action";
