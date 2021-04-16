@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setCountryWeather } from "../redux/CountryWeather.action";
-import { getWather } from "../Weather";
+import { Weather } from "../Weather";
 import BackgroundTheme from "./BackgroundTheme/BackgroundTheme";
 import CityWeather from "./CityWeather/CityWeather";
 import BtnFavorite from "./FavoriteButton/BtnFavorite";
@@ -14,7 +14,9 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getWather("tel aviv").then((data) => {
+
+    
+    Weather.getDefaultWather().then((data) => {
       console.log(data);
       dispatch(setCountryWeather(data));
     });

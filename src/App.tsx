@@ -11,11 +11,11 @@ function App() {
   );
 
   return (
-    <div style={{ backgroundColor: background }} className="base">
+    <div style={{ backgroundColor: background,height:"100%",width:"100%" }} >
       <nav>
         <AppNav />
       </nav>
-      <main >
+      <main className="base">
         <AppRoutes />
       </main>
       </div>

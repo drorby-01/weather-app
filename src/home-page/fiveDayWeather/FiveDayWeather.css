@@ -1,10 +1,17 @@
 .fiveDay{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    overflow-x: scroll;
+    width: 100%;
     animation: fadein 4s;
 }
+
+.card{
+ margin-right:15px;
+ overflow:visible;
+ text-transform: capitalize;
+}
+
+.fiveDay::-webkit-scrollbar {    display: none;}
 
 @keyframes fadein {
     from { opacity: 0; }
