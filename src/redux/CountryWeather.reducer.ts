@@ -18,7 +18,7 @@ export const weatherReducer = (state:IWheater=initalState , action:IAction )=>{
     const copyState = {...state};
 
     switch(action.type){
-        case ACTIONS.COUNTRY_WEATHER : {console.log(action.payload); return action.payload;}
+        case ACTIONS.COUNTRY_WEATHER : { return action.payload;}
     }
     return copyState;
 }

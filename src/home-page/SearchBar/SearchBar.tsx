@@ -1,28 +1,39 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import { IWheater, setCountryWeather } from "../../redux/CountryWeather.action";
 import { Weather } from "../../Weather";
+import ModalError from "../Alert/Alert";
+
 
 const SearchBar = () => {
+  const [state, setState] = useState({city:"",error:false}); //get input
+
   const dispatch = useDispatch();
 
-  const [state, setState] = useState("");
   const getCityWeather = async () => {
-    const weather: IWheater = await Weather.getWather(state);
+    const weather: IWheater = await Weather.getWather(state.city);
     dispatch(setCountryWeather(weather));
   };
+
+  const checkInput=(e:any)=>{
+  if(e.target.value.match(/[a-zA-Z]+$/)){
+    setState({city:e.target.value,error:false})
+  }
+  else setState({city:"",error:true})
+  }
+
 
   return (
     <>
       <input
         type="text"
-        className="form-control col-lg-2 col-xl-3 col-md-4 col-sm-6 col-7 d-inline m-1"
-        value={state}
-        onChange={({ target }) => setState(target.value)}
+        className="form-control w-auto d-inline m-1"
+        value={state.city}
+        onChange={checkInput}
       />
-
+      {state.error && <ModalError show={state.error} onHide={()=>setState({...state,error:false})}/> }
       <Button onClick={getCityWeather} className="m-1">
         Search
       </Button>

@@ -4,10 +4,11 @@ import { IWheater } from "./redux/CountryWeather.action";
 export class Weather {
   private static DEFAULTKEY: string; //tel aviv get location key
   private static DEFAULTCITY: string;
+  private static readonly APIKEY:string = "dGBueiXLqx0EiTyDssvtTsb0pajujEZk" 
   private static async getLocationKey(cityName: string) {
     if (cityName) {
       const { data }: any = await Api.apiGetCall(
-        `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA&q=${cityName}`
+        `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.APIKEY}&q=${cityName}`
       );
       if (Array.isArray(data) && data.length !== 0) {
         return data[0].Key; //get the key from the location api
@@ -26,7 +27,7 @@ export class Weather {
     if (locationKey === this.DEFAULTKEY) cityName = this.DEFAULTCITY; // if i dont find my location from the search box it will give me the default key so i return the default city
     try {
       const { data }: any = await Api.apiGetCall(
-        `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA`
+        `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.APIKEY}`
       );
       const tempatureValue: string = data[0].Temperature.Metric.Value;
       const tempatureUnit: string = data[0].Temperature.Metric.Unit;
@@ -45,7 +46,7 @@ export class Weather {
     cityKey: string = this.DEFAULTKEY
   ): Promise<string[]> {
     const { data }: any = await Api.apiGetCall(
-      `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA&metric=true`
+      `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${this.APIKEY}&metric=true`
     );
 
     const { DailyForecasts } = data;
@@ -56,35 +57,35 @@ export class Weather {
     return getTempatureForFiveDays;
   }
 
-  public static async setDefault():Promise<any> {
-    
-    return new Promise((resolve)=>{
+  public static async setDefault(): Promise<any> {
+    return new Promise((resolve) => {
       navigator.geolocation.getCurrentPosition(
         async (res) => {
           const latitude: number = res.coords.latitude;
           const longitude: number = res.coords.longitude;
           try {
             const { data }: any = await Api.apiGetCall(
-              `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA&q=${latitude},${longitude}`
-            )
-            resolve({key:data.Key,city:data.LocalizedName})
-            
+              `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.APIKEY}&q=${latitude},${longitude}`
+            );
+            resolve({ key: data.Key, city: data.LocalizedName });
           } catch (e) {
             console.log(e.message);
           }
         },
         async (error) => {
-          resolve({key:await this.getLocationKey("tel aviv"),city:"tel aviv"})
+          resolve({
+            key: await this.getLocationKey("tel aviv"),
+            city: "tel aviv",
+          });
         }
       );
-    })
-    
+    });
   }
 
   public static async getDefaultWather() {
-   const result =  await this.setDefault();
-   this.DEFAULTKEY =result.key;
-   this.DEFAULTCITY = result.city;
-  return await this.getWather(Weather.DEFAULTCITY);
+    const result = await this.setDefault();
+    this.DEFAULTKEY = result.key;
+    this.DEFAULTCITY = result.city;
+    return await this.getWather(Weather.DEFAULTCITY);
   }
 }

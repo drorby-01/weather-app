@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 import { setCountryWeather } from "../redux/CountryWeather.action";
 import { Weather } from "../Weather";
 import BackgroundTheme from "./BackgroundTheme/BackgroundTheme";
@@ -14,10 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    
     Weather.getDefaultWather().then((data) => {
-      console.log(data);
       dispatch(setCountryWeather(data));
     });
   }, []);
