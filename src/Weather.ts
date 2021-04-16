@@ -65,7 +65,7 @@ export class Weather {
           const longitude: number = res.coords.longitude;
           try {
             const { data }: any = await Api.apiGetCall(
-              `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA&q=${latitude},${longitude}`
+              `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tWH7Qelmx1FJVxRcUDePlyuWTG8EgeRA&q=${latitude},${longitude}`
             )
             resolve({key:data.Key,city:data.LocalizedName})
             
