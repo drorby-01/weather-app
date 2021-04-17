@@ -1,6 +1,7 @@
 .fiveDay{
     display: flex;
     overflow-x: scroll;
+    justify-content: space-between;
     width: 100%;
     animation: fadein 4s;
 }

@@ -25,7 +25,7 @@ const SearchBar = () => {
       return setState({ city: e.target.value, error: false });
     } else return setState({ city: "", error: true });
   };
-
+ 
   return (
     <>
       <input

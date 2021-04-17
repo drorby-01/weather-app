@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { IWheater } from "../../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../../Weather";
@@ -8,10 +7,11 @@ import "./FiveDayWeather.css";
 const FiveDayWeather = () => {
   const weather: IWheater = useSelector((state: any) => state.weatherReducer);
   const [weatherTempatures, setweatherTemaptures] = useState<Array<string>>([]);
+
   const backgroundColor = useSelector(
     (state: any) => state.ThemeBackgroundColor.background
   );
-
+  
   useEffect(() => {
     async function weatherApi() {
       const weatherArray: Array<string> = await Weather.getFiveDayWeather(
