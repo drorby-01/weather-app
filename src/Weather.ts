@@ -5,6 +5,7 @@ export class Weather {
   private static DEFAULTKEY: string; //tel aviv get location key
   private static DEFAULTCITY: string;
   private static readonly APIKEY:string = "SY6c65tT2R0FwDgE5Oyi2r0EqlpGVrj7" 
+  
   private static async getLocationKey(cityName: string) {
     if (cityName) {
       const { data }: any = await Api.apiGetCall(

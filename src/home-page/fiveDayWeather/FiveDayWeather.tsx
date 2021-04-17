@@ -6,6 +6,7 @@ import "./FiveDayWeather.css";
 const FiveDayWeather = () => {
   const weather: IWheater = useSelector((state: any) => state.weatherReducer);
   const [weatherTempatures, setweatherTemaptures] = useState<Array<string>>([]);
+  const backgroundColor = useSelector((state:any)=>state.ThemeBackgroundColor.background)
 
   useEffect(() => {
     async function weatherApi() {
@@ -26,12 +27,12 @@ const FiveDayWeather = () => {
   return (
     <>
       <h1 style={{ color: "gold" }}>The Weather For The Five Day</h1>
-      <div className="fiveDay">
+      <div className="fiveDay" style={{backgroundColor}}>
         {weatherTempatures.map((element: string, index) => (
           <div
             key={`weather${index}`}
             className="card"
-            style={{ padding: "20px", minWidth: "auto" }}
+            style={{ padding: "20px", minWidth: "auto"  }}
           >
             <p className="card-text"> Day : {getDay(index)}</p>
             <p className="card-text">City:{weather.city}</p>
