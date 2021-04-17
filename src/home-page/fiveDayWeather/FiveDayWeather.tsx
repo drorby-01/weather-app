@@ -11,7 +11,8 @@ const FiveDayWeather = () => {
   const backgroundColor = useSelector(
     (state: any) => state.ThemeBackgroundColor.background
   );
-  
+  const loader = useSelector((state: any) => state.LoaderReducer.loader);
+
   useEffect(() => {
     async function weatherApi() {
       const weatherArray: Array<string> = await Weather.getFiveDayWeather(
@@ -28,10 +29,11 @@ const FiveDayWeather = () => {
     );
   };
 
+  if(loader) return <FiveLoader/>
+
   return (
     <>
       <h1 style={{ color: "gold" }}>The Weather For The Five Day</h1>
-      {weatherTempatures.length === 0 && <FiveLoader />}
       <div className="fiveDay" style={{ backgroundColor }}>
         {weatherTempatures.map((element: string, index) => (
           <div

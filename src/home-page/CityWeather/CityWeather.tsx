@@ -9,7 +9,9 @@ const CityWeather = () => {
     (state: any) => state.weatherReducer
   ); 
   
-  if(cityWeather.tempatureValue==="") return <div className="layout-loader"> <Spinner animation={"border"} style={{height:"100px",width:"100px"}}  /> </div>
+  const loader = useSelector((state: any) => state.LoaderReducer.loader);
+
+  if(loader) return <div className="layout-loader"> <Spinner animation={"border"} style={{height:"100px",width:"100px"}}  /> </div>
   return (
     <div style={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
         <h1 className="cityName" style={{color:"gold"}}>{cityWeather.city} </h1>

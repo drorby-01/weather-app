@@ -6,6 +6,7 @@ import {
   IWheater,
   setCountryWeather,
 } from "../../redux/CountryWeather/CountryWeather.action";
+import { setLoader } from "../../redux/Loader/loader.action";
 import { Weather } from "../../Weather";
 import ModalError from "../Alert/Alert";
 
@@ -15,6 +16,8 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   const getCityWeather = async () => {
+    
+    dispatch(setLoader())
     const weather: IWheater = await Weather.getWather(state.city);
     dispatch(setCountryWeather(weather));
   };
