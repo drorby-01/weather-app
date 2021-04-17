@@ -1,5 +1,6 @@
 import { ACTIONS } from "../Actions";
-import { IAction } from "../CountryWeather.reducer";
+import { IAction } from "../CountryWeather/CountryWeather.reducer";
+
 
 const initalState = {
   background: "white",

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { setCountryWeather } from "../redux/CountryWeather.action";
+import { setCountryWeather } from "../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../Weather";
 import BackgroundTheme from "./BackgroundTheme/BackgroundTheme";
 import CityWeather from "./CityWeather/CityWeather";

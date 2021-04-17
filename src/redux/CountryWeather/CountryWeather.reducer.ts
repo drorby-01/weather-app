@@ -1,4 +1,5 @@
-import { ACTIONS } from "./Actions";
+
+import { ACTIONS } from "../Actions";
 import {  IWheater } from "./CountryWeather.action"
 
 const initalState = {

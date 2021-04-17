@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { IWheater } from "../../redux/CountryWeather.action";
+import { IWheater } from "../../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../../Weather";
 import "./FiveDayWeather.css";
 const FiveDayWeather = () => {

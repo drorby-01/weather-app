@@ -1,5 +1,5 @@
 import Api from "./Api";
-import { IWheater } from "./redux/CountryWeather.action";
+import { IWheater } from "./redux/CountryWeather/CountryWeather.action";
 
 export class Weather {
   private static DEFAULTKEY: string; //tel aviv get location key

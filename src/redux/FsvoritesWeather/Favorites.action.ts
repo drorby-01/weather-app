@@ -1,5 +1,5 @@
 import { ACTIONS } from "../Actions";
-import { IWheater } from "../CountryWeather.action";
+import { IWheater } from "../CountryWeather/CountryWeather.action";
 
 export const addToFavorites=(country:IWheater)=>{
             return {

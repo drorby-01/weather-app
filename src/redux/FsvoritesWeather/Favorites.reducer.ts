@@ -1,6 +1,7 @@
 import { ACTIONS } from "../Actions";
-import { IWheater } from "../CountryWeather.action";
-import { IAction } from "../CountryWeather.reducer";
+import { IWheater } from "../CountryWeather/CountryWeather.action";
+import { IAction } from "../CountryWeather/CountryWeather.reducer";
+
 
 const initialState: IFavorites = {
   favorites: [],

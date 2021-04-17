@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IWheater } from "../../redux/CountryWeather.action";
+import { IWheater } from "../../redux/CountryWeather/CountryWeather.action";
 import { addToFavorites } from "../../redux/FsvoritesWeather/Favorites.action";
 import "./BtnFavorite.css";
 const BtnFavorite = () => {

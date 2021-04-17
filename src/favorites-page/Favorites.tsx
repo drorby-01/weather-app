@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { IWheater } from '../redux/CountryWeather.action'
+import { IWheater } from '../redux/CountryWeather/CountryWeather.action'
 
 const Favorites = () => {
 

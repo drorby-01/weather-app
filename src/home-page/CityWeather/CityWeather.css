@@ -2,3 +2,11 @@
     letter-spacing: 2px;
     text-transform:capitalize;
 }
+
+.layout-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

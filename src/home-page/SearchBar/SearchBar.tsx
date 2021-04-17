@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {  Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
-import { IWheater, setCountryWeather } from "../../redux/CountryWeather.action";
+import { IWheater, setCountryWeather } from "../../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../../Weather";
 import ModalError from "../Alert/Alert";
 

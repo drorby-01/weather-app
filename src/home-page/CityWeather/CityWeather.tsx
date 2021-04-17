@@ -1,6 +1,7 @@
-import React  from "react";
+import React, { useState }  from "react";
+import { Spinner } from "react-bootstrap";
 import {  useSelector } from "react-redux";
-import { IWheater, } from "../../redux/CountryWeather.action";
+import { IWheater, } from "../../redux/CountryWeather/CountryWeather.action";
 import "./CityWeather.css"
 const CityWeather = () => {
   
@@ -8,7 +9,7 @@ const CityWeather = () => {
     (state: any) => state.weatherReducer
   ); 
   
-
+  if(cityWeather.tempatureValue==="") return <div className="layout-loader"> <Spinner animation={"border"} style={{height:"100px",width:"100px"}}  /> </div>
   return (
     <div style={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
         <h1 className="cityName" style={{color:"gold"}}>{cityWeather.city} </h1>
