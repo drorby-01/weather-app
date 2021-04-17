@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import {  Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
-import { IWheater, setCountryWeather } from "../../redux/CountryWeather/CountryWeather.action";
+import {
+  IWheater,
+  setCountryWeather,
+} from "../../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../../Weather";
 import ModalError from "../Alert/Alert";
 
-
 const SearchBar = () => {
-  const [state, setState] = useState({city:"",error:false}); //get input
+  const [state, setState] = useState({ city: "", error: false }); //get input
 
   const dispatch = useDispatch();
 
@@ -17,13 +19,12 @@ const SearchBar = () => {
     dispatch(setCountryWeather(weather));
   };
 
-  const checkInput=(e:any)=>{
-  if(e.target.value.match(/[a-zA-Z]+$/)){
-    setState({city:e.target.value,error:false})
-  }
-  else setState({city:"",error:true})
-  }
-
+  const checkInput = (e: any) => {
+    
+    if (e.target.value.match(/^[a-zA-Z]+$|\s/) || e.target.value ==="" ) {
+      return setState({ city: e.target.value, error: false });
+    } else return setState({ city: "", error: true });
+  };
 
   return (
     <>
@@ -33,7 +34,12 @@ const SearchBar = () => {
         value={state.city}
         onChange={checkInput}
       />
-      {state.error && <ModalError show={state.error} onHide={()=>setState({...state,error:false})}/> }
+      {state.error && (
+        <ModalError
+          show={state.error}
+          onHide={() => setState({ ...state, error: false })}
+        />
+      )}
       <Button onClick={getCityWeather} className="m-1">
         Search
       </Button>

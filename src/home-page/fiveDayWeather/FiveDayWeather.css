@@ -2,7 +2,6 @@
     display: flex;
     overflow-x: scroll;
     width: 100%;
-    justify-content: space-between;
     animation: fadein 4s;
 }
 
