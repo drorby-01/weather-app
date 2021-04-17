@@ -15,7 +15,7 @@ function App() {
       <nav>
         <AppNav />
       </nav>
-      <main className="base" style={{backgroundColor:background}} >
+      <main style={{backgroundColor:background}} >
         <AppRoutes />
       </main>
       </div>
