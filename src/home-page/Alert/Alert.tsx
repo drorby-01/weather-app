@@ -8,7 +8,7 @@ const ModalError = (props: any) => {
         <Modal.Title id="contained-modal-title-vcenter">Error</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>you must enter only english letter</p>
+        <p style={{textTransform:"capitalize"}} >you must enter only english letter</p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
