@@ -37,11 +37,11 @@ const FiveDayWeather = () => {
           <div
             key={`weather${index}`}
             className="card"
-            style={{ padding: "20px", minWidth: "auto" }}
+            style={{ padding: "20px", minWidth: "200px" }}
           >
             <p className="card-text"> Day : {getDay(index)}</p>
             <p className="card-text">City:{weather.city}</p>
-            <p className="card-text">Tempature:{element}</p>
+            <p className="card-text">{element}</p>
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCountryWeather } from "../redux/CountryWeather/CountryWeather.action";
 import { Weather } from "../Weather";
 import BackgroundTheme from "./BackgroundTheme/BackgroundTheme";
@@ -12,21 +12,11 @@ import SearchBar from "./SearchBar/SearchBar";
 
 const Home = () => {
   const dispatch = useDispatch();
+  
+  const city = useSelector((state:any)=>state.weatherReducer.city)
 
-  useEffect(() => {
-
-    Weather.getWather("tel aviv").then((data)=>{
-      dispatch(setCountryWeather(data));
-      
-    })
-
-    Weather.getDefaultWather().then((data) => {
-      
-      dispatch(setCountryWeather(data));
-      
-    });
-    
-  }, []);
+  console.log(city)
+  
 
   return (
     <div className="home">

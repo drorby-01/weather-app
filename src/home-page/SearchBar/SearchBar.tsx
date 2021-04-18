@@ -36,15 +36,10 @@ const SearchBar = () => {
         value={state.city}
         onChange={checkInput}
       />
-      {state.error && (
-        <ModalError
-          show={state.error}
-          onHide={() => setState({ ...state, error: false })}
-        />
-      )}
       <Button onClick={getCityWeather} className="m-1">
         Search
       </Button>
+      
     </>
   );
 };

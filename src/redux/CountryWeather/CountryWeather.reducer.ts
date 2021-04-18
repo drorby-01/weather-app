@@ -4,7 +4,7 @@ import {  IWheater } from "./CountryWeather.action"
 
 const initalState = {
     locationKey:"215854",
-    city:"",
+    city:"tel aviv",
     tempatureValue:"",
     tempatureUnit:"C°"
 }

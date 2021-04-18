@@ -1,10 +1,22 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
-import { IWheater } from '../redux/CountryWeather/CountryWeather.action'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { IWheater, setCountryWeather } from '../redux/CountryWeather/CountryWeather.action'
+import { Weather } from '../Weather'
 
 const Favorites = () => {
 
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const goHome = (city:string)=>{
+        console.log(city)
+         Weather.getWather(city).then((data:IWheater)=>dispatch(setCountryWeather(data)))
+         history.goBack()
+    }
+
+    
 
     const state:Array<IWheater> = useSelector((state:any)=>state.FavoriteReducer.favorites)
 
@@ -13,7 +25,7 @@ const Favorites = () => {
         <div>
             {
                 state.map((element:IWheater)=>(
-                    <Card key={element.locationKey} className="p-2">
+                    <Card key={element.locationKey} className="p-2" onClick={()=>goHome(element.city)}>
                         <Card.Body> City: {element.city}</Card.Body>
                         <Card.Body> Tempature: {element.tempatureValue} {element.tempatureUnit}</Card.Body>
                     </Card>
