@@ -14,9 +14,18 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Weather.getDefaultWather().then((data) => {
+
+    Weather.getWather("tel aviv").then((data)=>{
       dispatch(setCountryWeather(data));
+      
+    })
+
+    Weather.getDefaultWather().then((data) => {
+      
+      dispatch(setCountryWeather(data));
+      
     });
+    
   }, []);
 
   return (

@@ -11,11 +11,11 @@ function App() {
   );
 
   return (
-    <div style={{ backgroundColor: background}} className="fullScreen" >
+    <div style={{height:"100%",width:"100%"}}>
       <nav>
         <AppNav />
       </nav>
-      <main style={{backgroundColor:background}} >
+      <main style={{backgroundColor:background}} className="fullScreen" >
         <AppRoutes />
       </main>
       </div>
