@@ -7,25 +7,27 @@ export class Weather {
   private static readonly APIKEY:string = "nxAc4Cec4yFqDi4mcFuvdWnAGV0wnTQg" 
   
   private static async getLocationKey(cityName: string) {
-    if (cityName) {
+    
       const { data }: any = await Api.apiGetCall(
         `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.APIKEY}&q=${cityName}`
       );
       if (Array.isArray(data) && data.length !== 0) {
         return data[0].Key; //get the key from the location api
       } else {
-        await this.setDefault();
+      const result= await this.setDefault();
+      Weather.DEFAULTKEY=result.key;
+      Weather.DEFAULTCITY=result.city
         return Weather.DEFAULTKEY; // if there is an error i will return tel aviv ot my location key
       }
-    }
+    
   }
 
   static async getWather(cityName: string): Promise<IWheater> {
     let locationKey: string;
 
     locationKey = await this.getLocationKey(cityName.toLowerCase()); //give me the location key
-    console.log(locationKey);
-    if (locationKey === this.DEFAULTKEY) cityName = this.DEFAULTCITY; // if i dont find my location from the search box it will give me the default key so i return the default city
+    console.log(locationKey,Weather.DEFAULTKEY);
+    if (locationKey === this.DEFAULTKEY ) cityName = this.DEFAULTCITY; // if i dont find my location from the search box it will give me the default key so i return the default city
     try {
       const { data }: any = await Api.apiGetCall(
         `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.APIKEY}`

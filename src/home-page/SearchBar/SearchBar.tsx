@@ -8,38 +8,43 @@ import {
 } from "../../redux/CountryWeather/CountryWeather.action";
 
 import { Weather } from "../../Weather";
-import ModalError from "../Alert/Alert";
+import "./SearchBar.css";
 
 const SearchBar = () => {
-  const [state, setState] = useState({ city: "", error: false }); //get input
+  const [state, setState] = useState({ city: "", error: "" }); //get input
 
   const dispatch = useDispatch();
 
   const getCityWeather = async () => {
-    
+
     const weather: IWheater = await Weather.getWather(state.city);
     dispatch(setCountryWeather(weather));
   };
 
   const checkInput = (e: any) => {
-    
-    if (e.target.value.match(/^[a-zA-Z]+$|\s/) || e.target.value ==="" ) {
-      return setState({ city: e.target.value, error: false });
-    } else return setState({ city: "", error: true });
+    if (e.target.value.match(/^[a-zA-Z]+$|\s/) || e.target.value === "") {
+      return setState({ city: e.target.value, error: "" });
+    } else return setState({ city: "", error: "is-invalid" });
   };
- 
+  //is-invalid
   return (
     <>
+      <label htmlFor="validationServer03">City</label>
       <input
         type="text"
-        className="form-control w-auto d-inline m-1"
+        className={`form-control ${state.error}`}
+        id="validationServer03"
         value={state.city}
+        aria-describedby="validationServer03Feedback"
         onChange={checkInput}
+        required
       />
+      <div id="validationServer03Feedback" className="invalid-feedback">
+        you must enter english letter only
+      </div>
       <Button onClick={getCityWeather} className="m-1">
         Search
       </Button>
-      
     </>
   );
 };
