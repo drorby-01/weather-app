@@ -4,7 +4,7 @@ import { IWheater } from "./redux/CountryWeather/CountryWeather.action";
 export class Weather {
   private static DEFAULTKEY: string; //tel aviv get location key
   private static DEFAULTCITY: string;
-  private static readonly APIKEY:string = "nxAc4Cec4yFqDi4mcFuvdWnAGV0wnTQg" 
+  private static readonly APIKEY:string = "VDHMUJxQ133XCzVpjKlUGGypchM18G50" 
   
   private static async getLocationKey(cityName: string) {
     

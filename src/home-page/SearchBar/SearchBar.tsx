@@ -29,10 +29,10 @@ const SearchBar = () => {
   //is-invalid
   return (
     <>
-      <label htmlFor="validationServer03">City</label>
+      <label htmlFor="validationServer03" className="m-1">City</label>
       <input
         type="text"
-        className={`form-control ${state.error}`}
+        className={`form-control m-1 ${state.error} w-auto`}
         id="validationServer03"
         value={state.city}
         aria-describedby="validationServer03Feedback"

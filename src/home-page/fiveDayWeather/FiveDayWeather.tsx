@@ -31,7 +31,7 @@ const FiveDayWeather = () => {
 
   return (
     <>
-      <h1 style={{ color: "gold" }}>The Weather For The Five Day</h1>
+      <h1 style={{ color: "gold"}} className="text-center">The Weather For The Five Day</h1>
       <div className="fiveDay" style={{ backgroundColor }}>
         {weatherTempatures.map((element: string, index) => (
           <div

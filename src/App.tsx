@@ -1,4 +1,4 @@
-import React, { useEffect }   from "react";
+import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import AppNav from "./nav-bar/AppNav";
@@ -13,31 +13,28 @@ function App() {
   );
 
   const dispatch = useDispatch();
-  
-  const city = useSelector((state:any)=>state.weatherReducer.city)
+
+  const city = useSelector((state: any) => state.weatherReducer.city);
 
   useEffect(() => {
-
-    Weather.getWather(city).then((data)=>{
-      dispatch(setCountryWeather(data));   
-    })
+    Weather.getWather(city).then((data) => {
+      dispatch(setCountryWeather(data));
+    });
 
     Weather.getDefaultWather().then((data) => {
       dispatch(setCountryWeather(data));
     });
-    
   }, []);
-  
-  
+
   return (
-    <div className="fullScreen" style={{backgroundColor:background}}>
+    <div className="fullScreen" style={{ backgroundColor: background }}>
       <nav>
         <AppNav />
       </nav>
-      <main   >
+      <main>
         <AppRoutes />
       </main>
-      </div>
+    </div>
   );
 }
 
